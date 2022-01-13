@@ -14,9 +14,15 @@ class Animal:
         print(f"\tDefensa -> {self.defensa}")
 
     def atacar(self, enemigo):
-        daño_recibido = self.ataque - enemigo.defensa
-        enemigo.hp -= daño_recibido
-        print(f"{self.nombre} hace {daño_recibido} puntos de daño a {enemigo.nombre}")
+        if enemigo is not self:
+            daño = self.ataque - self.defensa
+            enemigo.hp -= daño
+            if self.enemigo.hp <= 0:
+                print(f"{self.nombre} ha caído")
+            else:
+                print(f"{self.nombre} hace {daño} puntos de daño a {enemigo.nombre}")
+        else:
+            print("No te puedes suicidar!!")
 
 
 
